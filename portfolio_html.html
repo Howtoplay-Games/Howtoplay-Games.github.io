@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .skill-bar {
+            transition: width 1s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+
+    <!-- CONFIGURATION -->
+    <script>
+        const CONFIG = {
+            personal: {
+                name: "Your Name",
+                title: "Roblox Game Developer",
+                avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-B8D6A1F0E5024AE0A7C8D9E4E5B8F9A1-Png/150/150/AvatarHeadshot/Png/noFilter",
+                bio: "Passionate Roblox developer specializing in engaging gameplay mechanics and immersive experiences. Over X years of experience creating successful games with millions of visits.",
+                robloxProfile: "https://www.roblox.com/users/YOUR_USER_ID/profile"
+            },
+            
+            games: [
+                {
+                    title: "Game Title 1",
+                    description: "An exciting adventure game with unique mechanics and engaging storyline.",
+                    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=500&h=300&fit=crop",
+                    link: "https://www.roblox.com/games/GAME_ID_1",
+                    visits: "10M+",
+                    rating: "95%",
+                    featured: true
+                },
+                {
+                    title: "Game Title 2",
+                    description: "Fast-paced multiplayer combat experience with advanced mechanics.",
+                    image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=500&h=300&fit=crop",
+                    link: "https://www.roblox.com/games/GAME_ID_2",
+                    visits: "5M+",
+                    rating: "92%",
+                    featured: true
+                },
+                {
+                    title: "Game Title 3",
+                    description: "Creative building simulator with social features.",
+                    image: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=500&h=300&fit=crop",
+                    link: "https://www.roblox.com/games/GAME_ID_3",
+                    visits: "2M+",
+                    rating: "90%",
+                    featured: false
+                },
+                {
+                    title: "Game Title 4",
+                    description: "RPG adventure with custom quest system.",
+                    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&h=300&fit=crop",
+                    link: "https://www.roblox.com/games/GAME_ID_4",
+                    visits: "1M+",
+                    rating: "88%",
+                    featured: false
+                }
+            ],
+            
+            skills: [
+                { name: "Lua Scripting", level: 95 },
+                { name: "Game Design", level: 90 },
+                { name: "UI/UX Design", level: 85 },
+                { name: "3D Modeling", level: 75 },
+                { name: "Animation", level: 80 },
+                { name: "VFX & Particles", level: 85 }
+            ],
+            
+            stats: [
+                { icon: "👥", label: "Total Visits", value: "20M+" },
+                { icon: "🏆", label: "Games Published", value: "15+" },
+                { icon: "💻", label: "Years Experience", value: "5+" },
+                { icon: "🎮", label: "Active Players", value: "50K+" }
+            ],
+            
+            contact: {
+                email: "your.email@example.com",
+                discord: "YourDiscord#0000",
+                github: "https://github.com/yourusername",
+                twitter: "https://twitter.com/yourusername"
+            },
+            
+            theme: {
+                primary: "#3b82f6",
+                secondary: "#8b5cf6",
+                accent: "#ec4899"
+            }
+        };
+    </script>
+
+    <!-- Setup Notice -->
+    <div class="bg-blue-600 text-white py-2 px-4 text-center text-sm">
+        📝 <strong>Setup Required:</strong> Edit the CONFIG object in the script tag at the top of this HTML file. See README for instructions.
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-10 w-full z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="text-2xl font-bold gradient-text" id="nav-name"></div>
+            <div class="flex gap-6">
+                <a href="#home" class="hover:text-blue-400 transition-colors">Home</a>
+                <a href="#games" class="hover:text-blue-400 transition-colors">Games</a>
+                <a href="#skills" class="hover:text-blue-400 transition-colors">Skills</a>
+                <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center px-6 pt-20">
+        <div class="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 animate-fade-in">
+                <div class="inline-block px-4 py-2 bg-blue-500/20 rounded-full text-blue-300 text-sm font-semibold" id="hero-title">
+                </div>
+                <h1 class="text-6xl font-bold leading-tight">
+                    Hi, I'm <span class="gradient-text" id="hero-name"></span>
+                </h1>
+                <p class="text-xl text-gray-300" id="hero-bio"></p>
+                <div class="flex gap-4">
+                    <a id="roblox-profile-btn" href="#" target="_blank" rel="noopener noreferrer" 
+                       class="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg font-semibold hover:scale-105 transition-transform flex items-center gap-2">
+                        View Roblox Profile
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+                    <a href="#contact" class="px-8 py-3 border-2 border-blue-500 rounded-lg font-semibold hover:bg-blue-500/20 transition-colors">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+            <div class="relative animate-fade-in">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full blur-3xl opacity-30"></div>
+                <img id="hero-avatar" src="" alt="Avatar" class="relative w-full max-w-md mx-auto rounded-2xl shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 px-6 bg-slate-800/50">
+        <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8" id="stats-container">
+        </div>
+    </section>
+
+    <!-- Featured Games -->
+    <section id="games" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center">Featured Games</h2>
+            <div class="grid md:grid-cols-2 gap-8" id="featured-games-container">
+            </div>
+            
+            <!-- All Games -->
+            <div class="mt-12 space-y-4">
+                <h3 class="text-2xl font-bold">All Projects</h3>
+                <div id="all-games-container"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6 bg-slate-800/50">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center">Skills & Expertise</h2>
+            <div class="space-y-6" id="skills-container">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+            <h2 class="text-4xl font-bold">Let's Work Together</h2>
+            <p class="text-xl text-gray-400">
+                Interested in collaborating or have a project in mind? Get in touch!
+            </p>
+            <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                <a id="email-link" href="#" class="p-6 bg-slate-800/50 rounded-xl hover:bg-slate-800 transition-colors flex items-center gap-4">
+                    <div class="text-4xl">📧</div>
+                    <div class="text-left">
+                        <div class="font-semibold">Email</div>
+                        <div class="text-sm text-gray-400" id="email-text"></div>
+                    </div>
+                </a>
+                <div class="p-6 bg-slate-800/50 rounded-xl hover:bg-slate-800 transition-colors flex items-center gap-4">
+                    <div class="text-4xl">💬</div>
+                    <div class="text-left">
+                        <div class="font-semibold">Discord</div>
+                        <div class="text-sm text-gray-400" id="discord-text"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center gap-6 pt-8" id="social-links">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 bg-slate-900 text-center text-gray-400">
+        <p id="footer-text"></p>
+        <p class="text-sm mt-2">Made with ❤️ for Roblox Developers</p>
+    </footer>
+
+    <!-- JavaScript to populate content -->
+    <script>
+        // Populate personal info
+        document.getElementById('nav-name').textContent = CONFIG.personal.name;
+        document.getElementById('hero-title').textContent = CONFIG.personal.title;
+        document.getElementById('hero-name').textContent = CONFIG.personal.name;
+        document.getElementById('hero-bio').textContent = CONFIG.personal.bio;
+        document.getElementById('hero-avatar').src = CONFIG.personal.avatar;
+        document.getElementById('roblox-profile-btn').href = CONFIG.personal.robloxProfile;
+        document.getElementById('footer-text').textContent = `© 2025 ${CONFIG.personal.name}. All rights reserved.`;
+
+        // Populate stats
+        const statsContainer = document.getElementById('stats-container');
+        CONFIG.stats.forEach(stat => {
+            const statDiv = document.createElement('div');
+            statDiv.className = 'text-center space-y-3 p-6 bg-slate-900/50 rounded-xl hover:bg-slate-900/70 transition-colors';
+            statDiv.innerHTML = `
+                <div class="text-5xl">${stat.icon}</div>
+                <div class="text-3xl font-bold text-blue-400">${stat.value}</div>
+                <div class="text-gray-400">${stat.label}</div>
+            `;
+            statsContainer.appendChild(statDiv);
+        });
+
+        // Populate featured games
+        const featuredGamesContainer = document.getElementById('featured-games-container');
+        const featuredGames = CONFIG.games.filter(game => game.featured);
+        featuredGames.forEach(game => {
+            const gameDiv = document.createElement('div');
+            gameDiv.className = 'group relative bg-slate-800/50 rounded-xl overflow-hidden hover:scale-105 transition-transform';
+            gameDiv.innerHTML = `
+                <img src="${game.image}" alt="${game.title}" class="w-full h-48 object-cover">
+                <div class="p-6 space-y-3">
+                    <h3 class="text-2xl font-bold">${game.title}</h3>
+                    <p class="text-gray-400">${game.description}</p>
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-blue-400">👥 ${game.visits} visits</span>
+                        <span class="text-green-400">⭐ ${game.rating} rating</span>
+                    </div>
+                    <a href="${game.link}" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center gap-2 px-6 py-2 bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors">
+                        Play Now
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+                </div>
+            `;
+            featuredGamesContainer.appendChild(gameDiv);
+        });
+
+        // Populate all games
+        const allGamesContainer = document.getElementById('all-games-container');
+        CONFIG.games.forEach(game => {
+            const gameDiv = document.createElement('div');
+            gameDiv.className = 'p-4 bg-slate-800/30 rounded-lg flex items-center justify-between hover:bg-slate-800/50 transition-colors';
+            gameDiv.innerHTML = `
+                <div>
+                    <div class="font-semibold">${game.title}</div>
+                    <div class="text-sm text-gray-400">${game.visits} visits • ${game.rating} rating</div>
+                </div>
+                <a href="${game.link}" target="_blank" rel="noopener noreferrer" 
+                   class="px-4 py-2 bg-blue-500/20 hover:bg-blue-500 rounded-lg transition-colors">
+                    View
+                </a>
+            `;
+            allGamesContainer.appendChild(gameDiv);
+        });
+
+        // Populate skills
+        const skillsContainer = document.getElementById('skills-container');
+        CONFIG.skills.forEach(skill => {
+            const skillDiv = document.createElement('div');
+            skillDiv.className = 'space-y-2';
+            skillDiv.innerHTML = `
+                <div class="flex justify-between text-sm">
+                    <span class="font-semibold">${skill.name}</span>
+                    <span class="text-blue-400">${skill.level}%</span>
+                </div>
+                <div class="h-3 bg-slate-700 rounded-full overflow-hidden">
+                    <div class="skill-bar h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full" 
+                         style="width: 0%;" data-level="${skill.level}"></div>
+                </div>
+            `;
+            skillsContainer.appendChild(skillDiv);
+        });
+
+        // Animate skill bars on load
+        setTimeout(() => {
+            document.querySelectorAll('.skill-bar').forEach(bar => {
+                bar.style.width = bar.dataset.level + '%';
+            });
+        }, 100);
+
+        // Populate contact
+        document.getElementById('email-text').textContent = CONFIG.contact.email;
+        document.getElementById('email-link').href = `mailto:${CONFIG.contact.email}`;
+        document.getElementById('discord-text').textContent = CONFIG.contact.discord;
+
+        // Populate social links
+        const socialLinksContainer = document.getElementById('social-links');
+        if (CONFIG.contact.github) {
+            const githubLink = document.createElement('a');
+            githubLink.href = CONFIG.contact.github;
+            githubLink.target = '_blank';
+            githubLink.rel = 'noopener noreferrer';
+            githubLink.className = 'w-12 h-12 flex items-center justify-center bg-slate-800 rounded-full hover:bg-blue-500 transition-colors';
+            githubLink.innerHTML = `
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            `;
+            socialLinksContainer.appendChild(githubLink);
+        }
+
+        if (CONFIG.contact.twitter) {
+            const twitterLink = document.createElement('a');
+            twitterLink.href = CONFIG.contact.twitter;
+            twitterLink.target = '_blank';
+            twitterLink.rel = 'noopener noreferrer';
+            twitterLink.className = 'w-12 h-12 flex items-center justify-center bg-slate-800 rounded-full hover:bg-blue-500 transition-colors';
+            twitterLink.innerHTML = `
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+            `;
+            socialLinksContainer.appendChild(twitterLink);
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(15, 23, 42, 0.95)';
+                navbar.style.backdropFilter = 'blur(12px)';
+                navbar.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.backgroundColor = 'transparent';
+                navbar.style.backdropFilter = 'none';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
